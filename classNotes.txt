@@ -1,0 +1,28 @@
+
+change     shell:windows    to bin/git.exe bash  in vscode to switch the terminal
+
+
+setup project
+1. mkdir folderName
+2. echo "folderName" >> README.md
+3. npm init
+4. git init
+5. git add -A
+6. git commit -m "first commit"
+7. git remote add origin ---put repo http here--- 
+8. git push -u origin master
+9. touch server.js
+10. $ node filename          this will run a js file
+11. add "dev": "nodemon server.js"        this will run nodemon server.js by using  npm run dev
+
+
+
+
+dictionary-shard-00-00-pr9fe.mongodb.net:27017
+
+C:/Users/tomal/Documents/JavascriptCode/spellCheckReact/new_data.json
+
+mongoimport --host dictionary-shard-00-00-pr9fe.mongodb.net:27017 --db dictionary --type json --file new_data.json --jsonArray --authenticationDatabase admin --ssl --username tblais1224 --password ana1224
+
+
+mongoimport --host cluster0-shard-00-00-cbei2.mongodb.net:27017 --db dictionary --type json --file ~/Users/tomal/Documents/JavascriptCode/spellCheckReact/new_data.json --jsonArray --authenticationDatabase admin --ssl --username tblais1224 --password maddiesbigtits1224
