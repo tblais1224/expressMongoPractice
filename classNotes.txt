@@ -12,10 +12,9 @@ setup project
 7. git remote add origin ---put repo http here--- 
 8. git push -u origin master
 9. touch server.js
-10. $ node filename          this will run a js file
+10. $ node <filename>          this will run a js file
 11. add "dev": "nodemon server.js"        this will run nodemon server.js by using  npm run dev
-
-
+12. open a file with    $ code <filename>
 
 
 dictionary-shard-00-00-pr9fe.mongodb.net:27017
