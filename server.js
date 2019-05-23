@@ -19,10 +19,12 @@ app.use(bodyParser.json())
 app.use("/", express.static("public"))
 
 
-
+//test server
 app.get("/", (req, res) => {
     res.send("Hello World This is Not a Drill. You are under attack!")
 })
+
+
 
 //post a message
 app.post("/api", (req, res) => {
@@ -32,8 +34,8 @@ app.post("/api", (req, res) => {
     }
 
     const user = new User(data)
-//saves the user into the db with the data from the front end post call
-//then returns the data after saving
+    //saves the user into the db with the data from the front end post call
+    //then returns the data after saving
     user.save().then((data) => {
         res.send(data)
     }).catch((err) => console.log(err))
@@ -42,9 +44,10 @@ app.post("/api", (req, res) => {
 
 //get all the posts
 app.get("/api/all", (req, res) => {
-//finds all users in collection and sends to frontend
-    User.find({}, function (err, docs) {})
-    .then((data) => res.send(data));
+    //finds all users in collection and sends to frontend
+    User.find({})
+        .then((data) => res.send(data))
+        .catch(err => console.log(err));
 })
 
 
