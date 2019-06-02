@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,22 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <h1>THIS IS A TEST EXPRESS APP</h1>
     <input type="text" placeholder="user name" id="userName">
     <input type="text" placeholder="message" id="message">
     <button onClick="getUserInfo()">Post Message to Board</button>
     <button onClick="getMessages()">Display Message Board</button>
-    <ul id="containerForResults"></ul>
+    <br>
+    <br>
+    <table style="width:100%">
+        <tbody id="containerForResults">
+            <tr>
+                <th>Name</th>
+                <th>Message</th>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

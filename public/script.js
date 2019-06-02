@@ -12,16 +12,20 @@ getUserInfo = () => {
         })
         //gets response from the server /api post route
         .then(response => {
-            //creates and h3 element
-            const msgContainer = document.createElement("li")
+            const msgContainer = document.createElement("tr")
+            //creates a text node of the message from the server response
+            const nameHolder = document.createElement("th")
+            const messageHolder = document.createElement("th")
             //creates a text node of the message from the server response
             const message = document.createTextNode(response.data.message)
             //makes username text node
-            const username = document.createTextNode(response.data.username + "'s message: ")
+            const username = document.createTextNode(response.data.username)
             //puts message inside its container
-            msgContainer.appendChild(username)
-            msgContainer.appendChild(message)
-            //adds the message container to results div
+            nameHolder.appendChild(username)
+            messageHolder.appendChild(message)
+            msgContainer.appendChild(nameHolder)
+            msgContainer.appendChild(messageHolder)
+    //adds the message container to results div
             //sets the message containers id to the id from the response
             document.getElementById("containerForResults").appendChild(msgContainer).setAttribute("id", response.data._id)
             //adds a click handler for deleting messages to the message element
@@ -40,14 +44,18 @@ getMessages = () => {
                     return false
                 } else {
                     //creates and h3 element
-                    const msgContainer = document.createElement("li")
+                    const msgContainer = document.createElement("tr")
                     //creates a text node of the message from the server response
-                    const message = document.createTextNode(element.message)
+                    const nameHolder = document.createElement("th")
+                    const messageHolder = document.createElement("th")
                     //makes username text node
-                    const username = document.createTextNode(element.username + "'s message: ")
+                    const username = document.createTextNode(element.username)
+                    const message = document.createTextNode(element.message)
                     //puts message inside its container
-                    msgContainer.appendChild(username)
-                    msgContainer.appendChild(message)
+                    nameHolder.appendChild(username)
+                    messageHolder.appendChild(message)
+                    msgContainer.appendChild(nameHolder)
+                    msgContainer.appendChild(messageHolder)
                     //adds the message container to results div
                     //sets the message containers id to the id from the response
                     document.getElementById("containerForResults").appendChild(msgContainer).setAttribute("id", element._id)
