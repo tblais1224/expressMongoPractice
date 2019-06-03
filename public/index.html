@@ -2,30 +2,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>in class express exercise</title>
-    <script src="script.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My express app</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>THIS IS A TEST EXPRESS APP</h1>
-    <input type="text" placeholder="user name" id="userName">
-    <input type="text" placeholder="message" id="message">
-    <button onClick="getUserInfo()">Post Message to Board</button>
-    <button onClick="getMessages()">Display Message Board</button>
-    <br>
-    <br>
-    <table style="width:100%">
-        <tbody id="containerForResults">
-            <tr>
-                <th>Name</th>
-                <th>Message</th>
-            </tr>
-        </tbody>
-    </table>
+  <h2>My Express App</h2>
+  <input placeholder="user name" type="text" id="userName">
+  <button onclick="getUserInfo()">Get user info</button>
+  <p id="userInfo"></p>
+  <h3>User registration</h3>
+  <input type="text" id="user-name" placeholder="User name">
+  <input type="text" id="message" placeholder="Message">
+  <button onclick="handleSubmit()">Submit</button>
+  <h3>Get all users</h3>
+  <button onclick="getAllUsers()">Get</button>
+  <p id="result"></p>
+
 </body>
+
 </html>

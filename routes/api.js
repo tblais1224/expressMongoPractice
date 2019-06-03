@@ -1,42 +1,48 @@
-const express = require("express")
-const router = express.Router()
-const User = require("../models/User.js")
-const mongoose = require("mongoose")
-const ObjectID = mongoose.Types.ObjectId;
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
 
+router.get("/", (req, res) => res.send("api route is working"));
 
-//post a message
-router.post("/", (req, res) => {
-    const data = {
-        username: req.body.username, 
-        message: req.body.message,
-    }
-    const user = new User(data)
-    //saves the user into the db with the data from the front end post call
-    //then returns the data after saving
-    user.save().then((data) => {
-        res.send(data)
-    }).catch((err) => console.log(err))
+router.post('/', function (req, res) {
+  const userName = req.body.username;
+  const message = req.body.message;
+
+  const data = {
+    username: userName,
+    message: message
+  }
+  console.log(data);
+
+  const user = new User(data)
+  user.save().then(() => {
+    console.log("New user created");
+    res.send(data);
+  })
 })
 
-//get all the posts
-router.get("/all", (req, res) => {
-    //finds all users in collection and sends to frontend
-    User.find({})
-        .then((data) => res.send(data))
-        .catch(err => console.log(err));
+router.get("/getallusers", function (req, res) {
+  User
+    .find()
+    .then(results => {
+      console.log(results)
+      res.send(results)
+    })
 })
 
-//delete posts
-router.delete("/", (req, res) => {
-    // const _id = new ObjectID(req.body._id)
-    const _id = new ObjectID(req.body.id)
-    //deletes from db by finding user id
-    User.deleteOne({
-            _id: _id
-        })
-        .then(() => res.send(true))
-        .catch(() => res.send("could not delete"))
+router.get("/showprofile/:username", function (req, res) {
+  const user = req.params.username;
+  console.log(user);
+
+  User.find({ username: user })
+    .then(result => {
+      console.log("Showing", user, "profile:", result)
+      res.send(result)
+    })
+    .catch(err => {
+      console.log(err)
+      res.send(err)
+    })
 })
 
-module.exports = router
+module.exports = router;

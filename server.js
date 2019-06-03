@@ -1,31 +1,18 @@
-const express = require("express")
+const express = require('express')
+const bodyParser = require('body-parser');
+const keys = require('./keys');
+const user = require('./models/User');
+const api = require("./routes/api");
 const app = express()
-const bodyParser = require("body-parser")
-const mongoose = require("mongoose")
-const mongoURI = require("./keys").mongoURI
-const api = require("./routes/api")
+const port = 4000
 
-//setup database
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true
-}).then(() => console.log("mongoDB has connected")).catch((err) => console.log(err));
+// Connecting mongoDB
+const mongoose = require('mongoose');
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true }).then(() => console.log("DB connected"));
 
-// parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use('/', express.static("public"));
 
-//auto changes root directory to public for the specified route
-app.use("/", express.static("public"))
+app.use('/api', api);
 
-//routes/api.js routes
-app.use("/api", api)
-
-
-//use params to access a page
-app.get("/showprofile/:username", (req, res) => {
-    const user = req.params.username
-    console.log(user)
-    res.send("profile page working")
-})
-
-const port = process.env.PORT || 5000
-app.listen(port, (err) => console.log("server is online running on port: " + port))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
